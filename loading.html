@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .loader {
+            border:  16px solid gray; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            }
+            .left ,.mask{
+                position: absolute;
+                left: 0;
+                top: 0;
+                clip:rect(0px,76px,156px,0px);
+                border:  16px solid blue; /* Blue */
+                border-radius: 50%;
+                width: 120px;
+                height: 120px;
+            }
+            .right{
+                position: absolute;
+                left: 0;
+                top: 0;
+                clip:rect(0px,156px,156px,76px);
+                border:  16px solid blue; /* Blue */
+                border-radius: 50%;
+                width: 120px;
+                height: 120px;
+            }
+            .none{
+                display: none;
+            }
+            .left{
+                transform: ;
+            }
+            @keyframes move {
+                to{transform: rotate(180deg)}
+            }
+            .mask{
+                border:  16px solid gray; /* Blue */
+            }
+            p{
+                position: absolute;
+                top: 60px;
+                left: 60px;
+                transform: translateY(-50%);
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="loader">
+            <div class="left "></div>
+            <div class="right none">
+            </div>
+            <div class="mask ">
+            </div>
+            <p >
+                0%
+            </p>
+        </div>
+        <input class='range' type="range" name="name" value="0" max="100">
+        <script type="text/javascript">
+            var left = document.querySelector('.left')
+            var mask = document.querySelector('.mask')
+            var right = document.querySelector('.right')
+            var range = document.querySelector('.range')
+            var p = document.querySelector('p')
+            var loading = function () {
+                    var n = range.value
+                    p.innerHTML = `${n}%`;
+                    if(n <= 50) {
+                        right.classList.add('none')
+                        mask.classList.remove('none')
+                        left.style.transform = `rotate(${3.6 * n}deg)`
+                    }else {
+                        right.classList.remove('none')
+                        left.style.transform = `rotate(${3.6 * n}deg)`
+                        mask.classList.add('none')
+                    }
+            }
+            range.oninput = loading;
+            // loading()
+        </script>
+    </body>
+</html>
