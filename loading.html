@@ -4,11 +4,21 @@
         <meta charset="utf-8">
         <title></title>
         <style media="screen">
-        body{
+        /*body{
             margin: 0;
             padding: 0;
+        }*/
+        .loader{
+            position: absolute;
+            top:300px;
+            left:200px;
+            width: 152px;
+            height: 152px;
         }
-        .loader {
+        .circle {
+            position: absolute;
+            left: 0;
+            top: 0;
             border:  16px solid gray; /* Blue */
             border-radius: 50%;
             width: 120px;
@@ -40,9 +50,7 @@
             .left{
                 transform: ;
             }
-            @keyframes move {
-                to{transform: rotate(180deg)}
-            }
+
             .mask{
                 border:  16px solid gray; /* Blue */
             }
@@ -52,10 +60,17 @@
                 left: 60px;
                 transform: translateY(-50%);
             }
+            .range{
+                position: absolute;
+                top:280px;
+                left:200px;
+            }
         </style>
     </head>
     <body>
         <div class="loader">
+            <div class="circle">
+            </div>
             <div class="left "></div>
             <div class="right none">
             </div>
@@ -66,6 +81,7 @@
             </p>
         </div>
         <input class='range' type="range" name="name" value="0" max="100">
+
         <script type="text/javascript">
             var left = document.querySelector('.left')
             var mask = document.querySelector('.mask')
